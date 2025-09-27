@@ -12,7 +12,7 @@ export default function HomePage() {
       <div className="space-y-6">
         {/* Header */}
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-bold text-balance">Welcome back, John!</h1>
+          <h1 className="text-3xl font-bold text-balance">Welcome back, Jaskirat!</h1>
           <p className="text-muted-foreground">Here's what's happening on your farm today.</p>
         </div>
 

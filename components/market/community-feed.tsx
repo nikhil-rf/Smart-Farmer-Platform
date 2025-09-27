@@ -93,7 +93,7 @@ export function CommunityFeed() {
     const post: Post = {
       id: Date.now().toString(),
       author: {
-        name: "John Doe",
+        name: "Jaskirat Singh",
         role: "Farmer",
         initials: "JD",
       },

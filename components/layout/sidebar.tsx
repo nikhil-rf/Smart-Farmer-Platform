@@ -2,10 +2,11 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Home, MessageSquare, Activity, TrendingUp, Leaf, BarChart3, Menu, X } from "lucide-react"
+import { LoadingSpinner } from "@/components/ui/loading-spinner"
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: Home },
@@ -18,7 +19,9 @@ const navigation = [
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isNavigating, setIsNavigating] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   return (
     <>
@@ -59,16 +62,25 @@ export function Sidebar() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  prefetch={true}
                   className={cn(
-                    "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                    "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors relative",
                     isActive
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-card-foreground hover:bg-muted",
                   )}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    setIsNavigating(true)
+                    setIsOpen(false)
+                    router.push(item.href)
+                  }}
                 >
-                  <item.icon className="w-5 h-5" />
-                  {item.name}
+                  <item.icon className={cn("w-5 h-5", isNavigating && pathname === item.href && "opacity-50")} />
+                  <span className={cn(isNavigating && pathname === item.href && "opacity-50")}>{item.name}</span>
+                  {isNavigating && pathname === item.href && (
+                    <LoadingSpinner className="absolute right-2" size="sm" />
+                  )}
                 </Link>
               )
             })}
@@ -81,7 +93,7 @@ export function Sidebar() {
                 <span className="text-sm font-medium text-secondary-foreground">JD</span>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-card-foreground truncate">John Doe</p>
+                <p className="text-sm font-medium text-card-foreground truncate">Jaskirat</p>
                 <p className="text-xs text-muted-foreground truncate">Organic Farm, Punjab</p>
               </div>
             </div>

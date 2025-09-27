@@ -97,8 +97,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+<<<<<<< HEAD
 Created by ❤️ from Nikhil 
 
 ## Support
 
 For support, please open an issue in the repository or contact the development team.
+=======
+## Support
+
+For support, please open an issue in the repository or contact the development team.
+>>>>>>> 39ecb00 (Add README and enhance UI components with loading states)

@@ -22,7 +22,7 @@ const leaderboard = [
   },
   {
     rank: 3,
-    name: "John Doe",
+    name: "Jaskirat Singh",
     location: "Punjab",
     points: 1240,
     initials: "JD",

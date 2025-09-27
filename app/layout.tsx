@@ -20,7 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
-        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+        <Suspense fallback={
+          <div className="fixed inset-0 flex items-center justify-center bg-background">
+            <div className="animate-pulse text-muted-foreground">Loading...</div>
+          </div>
+        }>
+          {children}
+        </Suspense>
         <Analytics />
       </body>
     </html>
